@@ -77,7 +77,6 @@ const Spredningskart = ({ readonly }) => {
 
   const [states, setStates] = useState(defaultStates);
   const [paintWithState, setPaintWithState] = useState();
-  const [a, setA] = useState(0);
 
   const getCurrentState = function(fylke, states) {
     let defaultState = null;
@@ -116,8 +115,6 @@ const Spredningskart = ({ readonly }) => {
     const curState = getCurrentState(fylke, states);
     const newState = getNextState(curState);
     setPaintWithState(newState);
-    setA(a + 1);
-    console.log("pain", curState, newState, paintWithState);
     setChecked(fylke, newState);
   };
 
@@ -147,7 +144,6 @@ const Spredningskart = ({ readonly }) => {
   }, {});
   return (
     <div>
-      {a}
       <div
         style={{
           border: "1px solid blue",
