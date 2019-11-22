@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ColorMapAreas from "./components/ColorMapAreas";
 import countyListLand from "./countyListLand";
+import boundary from "./map";
 
 const Spredningskart = ({ readonly }) => {
   const styles = {
@@ -161,6 +162,7 @@ const Spredningskart = ({ readonly }) => {
         <ColorMapAreas
           readonly={readonly}
           styles={styles}
+          boundary={boundary}
           onMouseLeave={() => {
             setPaintWithState(null);
           }}

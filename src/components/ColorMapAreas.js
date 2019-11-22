@@ -1,6 +1,5 @@
 import React from "react";
 //import boundary from "./boundary";
-import boundary from "../map";
 
 export default class ColorMapAreas extends React.Component {
   constructor() {
@@ -16,7 +15,7 @@ export default class ColorMapAreas extends React.Component {
   };
 
   render() {
-    //    const boundary = this.props.boundary;
+    const boundary = this.props.boundary;
     const styles = this.props.styles;
     const readOnly = this.props.readonly;
     const fylker = Object.keys(this.props.fylker).map(kode => {
