@@ -1,0 +1,97 @@
+[
+  {
+    "Id": "countyListLand",
+    "Value": "Øs",
+    "Text": "Østfold"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "OsA",
+    "Text": "Oslo og Akershus"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "He",
+    "Text": "Hedmark"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Op",
+    "Text": "Oppland"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Bu",
+    "Text": "Buskerud"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Ve",
+    "Text": "Vestfold"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Te",
+    "Text": "Telemark"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Aa",
+    "Text": "Aust-Agder"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Va",
+    "Text": "Vest-Agder"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Ro",
+    "Text": "Rogaland"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Ho",
+    "Text": "Hordaland"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Sf",
+    "Text": "Sogn og Fjordane"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Mr",
+    "Text": "Møre og Romsdal"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Tø",
+    "Text": "Trøndelag"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "No",
+    "Text": "Nordland"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Tr",
+    "Text": "Troms"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Fi",
+    "Text": "Finnmark"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Sv",
+    "Text": "Svalbard med sjøområder"
+  },
+  {
+    "Id": "countyListLand",
+    "Value": "Jm",
+    "Text": "Jan Mayen"
+  }
+]
