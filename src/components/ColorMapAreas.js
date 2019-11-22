@@ -44,10 +44,9 @@ export default class ColorMapAreas extends React.Component {
     });
     return (
       <svg
-        _x="0px"
-        _y="0px"
-        width={this.props.width}
-        height={this.props.height}
+        preserveAspectRatio="xMidYMin meet"
+        width="100%"
+        height="auto"
         viewBox={boundary.viewbox}
       >
         <g>{fylker}</g>

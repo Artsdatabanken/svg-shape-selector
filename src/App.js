@@ -84,7 +84,11 @@ export default class Spredningskart extends React.Component {
         <div
           style={{
             border: "1px solid blue",
-            position: "absolute"
+            position: "absolute",
+            left: 50,
+            top: 50,
+            height: 200,
+            width: 300
           }}
           onMouseLeave={() => {
             this.paintWithState = null;
@@ -93,8 +97,6 @@ export default class Spredningskart extends React.Component {
           <ColorMapAreas
             readonly={this.props.readonly}
             styles={styles}
-            width={500}
-            height={650}
             onMouseLeave={() => {
               this.paintWithState = null;
             }}
