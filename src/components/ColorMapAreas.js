@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Region from "./Region";
 
 const ColorMapAreas = ({
   boundary,
@@ -55,35 +56,6 @@ const ColorMapAreas = ({
       </defs>
       <g>{svgRegions}</g>
     </svg>
-  );
-};
-
-const Region = ({
-  kode,
-  title,
-  boundaryPath,
-  style,
-  readonly,
-  onMouseDown,
-  onMouseUp,
-  onMouseOver,
-  onMouseLeave
-}) => {
-  return (
-    <g
-      key={kode}
-      stroke={style.stroke}
-      strokeWidth={style.strokeWidth}
-      fill={style.fill}
-      style={{ cursor: readonly ? "arrow" : "hand" }}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseOver={onMouseOver}
-      onMouseLeave={onMouseLeave}
-    >
-      {boundaryPath}
-      <title>{title}</title>
-    </g>
   );
 };
 
