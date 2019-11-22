@@ -4,7 +4,7 @@ const Legend = ({ categories }) => (
   <div style={{ position: "absolute", display: "inline-block", bottom: 50 }}>
     {Object.keys(categories).map(key => {
       const x = categories[key];
-      return <LegendItem key={x.key} title={x.title} fill={x.normal.fill} />;
+      return <LegendItem key={key} title={x.title} fill={x.normal.fill} />;
     })}
   </div>
 );

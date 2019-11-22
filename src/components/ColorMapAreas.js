@@ -3,24 +3,26 @@ import Region from "./Region";
 
 const ColorMapAreas = ({
   boundary,
-  styles,
+  categories,
   readOnly,
-  fylker,
+  fylker: regionDefs,
+  states,
   onMouseDown,
   onMouseUp
 }) => {
   const [hoveringOver, setHoveringOver] = useState();
 
-  const svgRegions = Object.keys(fylker).map(kode => {
-    const prefs = fylker[kode];
-    const mainStyle = styles[prefs.style];
+  const svgRegions = Object.keys(regionDefs).map(kode => {
+    const regionDef = regionDefs[kode];
+    const state = states[kode] || 0;
+    const mainStyle = categories[state];
     let style = mainStyle.normal;
     if (hoveringOver === kode) style = mainStyle.highlight;
     return (
       <Region
         key={kode}
         kode={kode}
-        title={prefs.title}
+        title={regionDef.title}
         boundaryPath={boundary.regions[kode]}
         style={style}
         readonly={readOnly}

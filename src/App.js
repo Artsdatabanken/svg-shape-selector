@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import ColorMapAreas from "./components/ColorMapAreas";
 import countyListLand from "./countyListLand";
 import boundary from "./map";
 import Legend from "./Legend";
 
 const Spredningskart = ({ readonly }) => {
-  const categories = {
-    none: {
+  const categories = [
+    {
       title: "Ikke kjent",
       normal: {
         stroke: "#777",
@@ -18,7 +18,7 @@ const Spredningskart = ({ readonly }) => {
         fill: "hsl(10, 96%, 97%)"
       }
     },
-    assumed: {
+    {
       key: "assumed",
       title: "Antatt",
       normal: {
@@ -31,7 +31,7 @@ const Spredningskart = ({ readonly }) => {
         fill: "#fc8169"
       }
     },
-    known: {
+    {
       key: "known",
       title: "Kjent",
       normal: {
@@ -44,7 +44,7 @@ const Spredningskart = ({ readonly }) => {
         fill: "#ff4c29"
       }
     },
-    extinct: {
+    {
       key: "extinct",
       title: "Utdødd",
       normal: {
@@ -58,88 +58,51 @@ const Spredningskart = ({ readonly }) => {
         fill: "url(#diagonalHatch)"
       }
     }
-  };
-
-  const defaultStates = [
-    {
-      key: "none",
-      title: "Ikke kjent"
-    },
-    {
-      key: "known",
-      title: "Kjent",
-      values: {}
-    },
-    {
-      key: "assumed",
-      title: "Antatt",
-      values: {}
-    },
-    {
-      key: "extinct",
-      title: "Utdødd",
-      values: {}
-    }
   ];
 
-  const [states, setStates] = useState(defaultStates);
-  const [paintWithState, setPaintWithState] = useState();
+  const [states, setStates] = useState({});
+  const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState(1);
 
-  const getCurrentState = function(fylke, states) {
-    let defaultState = null;
-    for (let i = 0; i < states.length; i++) {
-      const state = states[i];
-      if (!state.values) defaultState = state;
-      else if (state.values[fylke]) return state;
-    }
-    return defaultState;
-  };
+  const setChecked = useCallback(
+    (fylke, state) => {
+      states[fylke] = state;
+      setStates(states);
+    },
+    [states]
+  );
 
-  const getNextState = function(curState) {
-    const currentIndex = getStateIndex(curState.key) || 0;
-    return (currentIndex + 1) % states.length;
-  };
+  const handleMouseOver = useCallback(
+    (e, fylke) => {
+      e.stopPropagation();
+      if (colorForHoldAndDragPaint == null) return;
+      setChecked(fylke, colorForHoldAndDragPaint);
+    },
+    [colorForHoldAndDragPaint, setChecked]
+  );
 
-  const getStateIndex = function(key) {
-    for (let i = 0; i < states.length; i++) if (key === states[i].key) return i;
-
-    throw new Error(`Unknown map state ${key}`);
-  };
-
-  const handleMouseOver = function(e, fylke) {
+  const handleMouseUp = useCallback(e => {
     e.stopPropagation();
-    if (paintWithState == null) return;
-    setChecked(fylke, paintWithState);
-  };
+    setColorForHoldAndDragPaint(null);
+  }, []);
 
-  const handleMouseUp = function(e) {
-    e.stopPropagation();
-    setPaintWithState(null);
-  };
-
-  const handleMouseDown = function(e, fylke) {
-    e.stopPropagation();
-    const curState = getCurrentState(fylke, states);
-    const newState = getNextState(curState);
-    setPaintWithState(newState);
-    setChecked(fylke, newState);
-  };
-
-  const setChecked = function(fylke, state) {
-    for (let i = 0; i < states.length; i++)
-      if (states[i].values) {
-        states[i].values[fylke] = state === i;
-        console.log(states[i].values[fylke], state, i);
-        setStates(states);
-      }
-  };
+  const handleMouseDown = useCallback(
+    (e, fylke) => {
+      e.stopPropagation();
+      const curState = states[fylke] || 0;
+      const newState = (curState + 1) % categories.length;
+      setColorForHoldAndDragPaint(newState);
+      setChecked(fylke, newState);
+    },
+    [states, categories.length, setChecked]
+  );
 
   const fylkerArray = countyListLand.map(fylke => {
-    const active = getCurrentState(fylke.Value, states);
+    const curState = states[fylke] || 0;
+    const active = categories[curState];
     return {
       id: fylke.Value,
       title: `${fylke.Text}: ${active.title}`,
-      style: active.key
+      style: active
     };
   });
 
@@ -161,20 +124,21 @@ const Spredningskart = ({ readonly }) => {
           width: 500
         }}
         onMouseLeave={() => {
-          setPaintWithState(null);
+          setColorForHoldAndDragPaint(null);
         }}
       >
         <ColorMapAreas
           readonly={readonly}
-          styles={categories}
+          categories={categories}
           boundary={boundary}
           onMouseLeave={() => {
-            setPaintWithState(null);
+            setColorForHoldAndDragPaint(null);
           }}
-          onMouseDown={(e, fylke) => handleMouseDown(e, fylke)}
-          onMouseUp={e => handleMouseUp(e)}
-          onMouseOver={(e, fylke) => handleMouseOver(e, fylke)}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseOver={handleMouseOver}
           fylker={fylker}
+          states={states}
         />
       </div>
       {<Legend categories={categories} />}
