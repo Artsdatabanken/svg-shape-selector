@@ -7,45 +7,45 @@ const Spredningskart = ({ readonly }) => {
     none: {
       normal: {
         stroke: "#777",
-        fill: "#ffffd4"
+        fill: "hsl(10, 96%, 97%)"
       },
       highlight: {
         stroke: "#222",
-        strokeWidth: 5,
-        fill: "#ffffd4"
-      }
-    },
-    potential: {
-      normal: {
-        stroke: "#777",
-        fill: "#fed98e"
-      },
-      highlight: {
-        stroke: "#222",
-        strokeWidth: 5,
-        fill: "#fed98e"
+        strokeWidth: 3,
+        fill: "hsl(10, 96%, 97%)"
       }
     },
     assumed: {
       normal: {
-        stroke: "#555",
-        fill: "#fe9929"
+        stroke: "#777",
+        fill: "#fc8169"
       },
       highlight: {
         stroke: "#222",
-        strokeWidth: 5,
-        fill: "#fe9929"
+        strokeWidth: 3,
+        fill: "#fc8169"
       }
     },
     known: {
       normal: {
         stroke: "#555",
-        fill: "#cc4c02"
+        fill: "#ff4c29"
       },
       highlight: {
         stroke: "#222",
-        strokeWidth: 5,
-        fill: "#cc4c02"
+        strokeWidth: 3,
+        fill: "#ff4c29"
+      }
+    },
+    extinct: {
+      normal: {
+        stroke: "#555",
+        fill: "#444"
+      },
+      highlight: {
+        stroke: "#222",
+        strokeWidth: 3,
+        fill: "#444"
       }
     }
   };
@@ -53,17 +53,22 @@ const Spredningskart = ({ readonly }) => {
   const defaultStates = [
     {
       key: "none",
-      title: "labels.distributionNone"
+      title: "Ikke kjent"
     },
     {
       key: "known",
-      title: "labels.distributionKnown",
-      values: {} //"vurdering.knownRegionalPresence"
+      title: "Kjent",
+      values: {}
     },
     {
       key: "assumed",
-      title: "labels.distributionAssumed",
-      values: {} //"vurdering.assumedRegionalPresence"
+      title: "Antatt",
+      values: {}
+    },
+    {
+      key: "extinct",
+      title: "Utdødd",
+      values: {}
     }
   ];
 

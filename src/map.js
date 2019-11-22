@@ -72,7 +72,7 @@ const regions = {
 
 const norway = {
   regions,
-  viewbox: "0 0 800 1000"
+  viewbox: "0 0 800 1010"
 };
 
 export default norway;
