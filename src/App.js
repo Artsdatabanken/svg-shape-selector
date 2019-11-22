@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ColorMapAreas from "./components/ColorMapAreas";
 import countyListLand from "./countyListLand";
 import boundary from "./map";
+import Legend from "./Legend";
 
 const Spredningskart = ({ readonly }) => {
   const styles = {
@@ -11,7 +12,7 @@ const Spredningskart = ({ readonly }) => {
         fill: "hsl(10, 96%, 97%)"
       },
       highlight: {
-        stroke: "#222",
+        stroke: "#333",
         strokeWidth: 3,
         fill: "hsl(10, 96%, 97%)"
       }
@@ -22,7 +23,7 @@ const Spredningskart = ({ readonly }) => {
         fill: "#fc8169"
       },
       highlight: {
-        stroke: "#222",
+        stroke: "#333",
         strokeWidth: 3,
         fill: "#fc8169"
       }
@@ -33,18 +34,19 @@ const Spredningskart = ({ readonly }) => {
         fill: "#ff4c29"
       },
       highlight: {
-        stroke: "#222",
+        stroke: "#333",
         strokeWidth: 3,
         fill: "#ff4c29"
       }
     },
     extinct: {
       normal: {
-        stroke: "#eee",
+        strokeWidth: 1,
+        stroke: "#333",
         fill: "url(#diagonalHatch)"
       },
       highlight: {
-        stroke: "#eee",
+        stroke: "#333",
         strokeWidth: 3,
         fill: "url(#diagonalHatch)"
       }
@@ -176,40 +178,5 @@ const Spredningskart = ({ readonly }) => {
     </div>
   );
 };
-
-const Legend = ({ states, styles }) => (
-  <div style={{ position: "absolute", display: "inline-block", bottom: 50 }}>
-    {states.map(x => (
-      <LegendItem
-        key={x.key}
-        title={x.title}
-        fill={styles[x.key].normal.fill}
-      />
-    ))}
-  </div>
-);
-
-const LegendItem = ({ title, fill }) => (
-  <div style={{ display: "inline-block", marginRight: "10px" }}>
-    <span
-      style={{
-        display: "inline-block",
-        borderWidth: "1px",
-        borderStyle: "solid",
-        width: "16px",
-        height: "16px",
-        backgroundColor: fill
-      }}
-    />
-    <span
-      style={{
-        display: "inline-block",
-        verticalAlign: "text-bottom"
-      }}
-    >
-      &nbsp;{title}
-    </span>
-  </div>
-);
 
 export default Spredningskart;
