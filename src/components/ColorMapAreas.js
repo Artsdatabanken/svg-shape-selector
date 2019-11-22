@@ -23,10 +23,7 @@ export default class ColorMapAreas extends React.Component {
       const prefs = this.props.fylker[kode];
       const mainStyle = styles[prefs.style];
       let style = mainStyle.normal;
-      console.log("prefs", prefs, mainStyle);
-      if (kode === "Fi") style = mainStyle.highlight;
       if (this.state.hoveringOver === kode) style = mainStyle.highlight;
-      console.log(kode);
       return (
         <Region
           key={kode}
@@ -70,6 +67,7 @@ const Region = ({
     <g
       key={kode}
       stroke={style.stroke}
+      strokeWidth={style.strokeWidth}
       fill={style.fill}
       style={{ cursor: readonly ? "arrow" : "hand" }}
       onMouseDown={onMouseDown}
