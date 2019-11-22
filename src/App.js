@@ -5,8 +5,9 @@ import boundary from "./map";
 import Legend from "./Legend";
 
 const Spredningskart = ({ readonly }) => {
-  const styles = {
+  const categories = {
     none: {
+      title: "Ikke kjent",
       normal: {
         stroke: "#777",
         fill: "hsl(10, 96%, 97%)"
@@ -18,6 +19,8 @@ const Spredningskart = ({ readonly }) => {
       }
     },
     assumed: {
+      key: "assumed",
+      title: "Antatt",
       normal: {
         stroke: "#777",
         fill: "#fc8169"
@@ -29,6 +32,8 @@ const Spredningskart = ({ readonly }) => {
       }
     },
     known: {
+      key: "known",
+      title: "Kjent",
       normal: {
         stroke: "#555",
         fill: "#ff4c29"
@@ -40,6 +45,8 @@ const Spredningskart = ({ readonly }) => {
       }
     },
     extinct: {
+      key: "extinct",
+      title: "Utdødd",
       normal: {
         strokeWidth: 1,
         stroke: "#333",
@@ -146,12 +153,12 @@ const Spredningskart = ({ readonly }) => {
     <div>
       <div
         style={{
-          border: "1px solid blue",
+          border: "1px solid #888",
           position: "absolute",
           left: 50,
           top: 50,
           height: 500,
-          width: 1000
+          width: 500
         }}
         onMouseLeave={() => {
           setPaintWithState(null);
@@ -159,7 +166,7 @@ const Spredningskart = ({ readonly }) => {
       >
         <ColorMapAreas
           readonly={readonly}
-          styles={styles}
+          styles={categories}
           boundary={boundary}
           onMouseLeave={() => {
             setPaintWithState(null);
@@ -170,7 +177,7 @@ const Spredningskart = ({ readonly }) => {
           fylker={fylker}
         />
       </div>
-      {<Legend states={states} styles={styles} />}
+      {<Legend categories={categories} />}
     </div>
   );
 };

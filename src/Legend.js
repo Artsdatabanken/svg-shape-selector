@@ -1,14 +1,11 @@
 import React from "react";
 
-const Legend = ({ states, styles }) => (
+const Legend = ({ categories }) => (
   <div style={{ position: "absolute", display: "inline-block", bottom: 50 }}>
-    {states.map(x => (
-      <LegendItem
-        key={x.key}
-        title={x.title}
-        fill={styles[x.key].normal.fill}
-      />
-    ))}
+    {Object.keys(categories).map(key => {
+      const x = categories[key];
+      return <LegendItem key={x.key} title={x.title} fill={x.normal.fill} />;
+    })}
   </div>
 );
 
