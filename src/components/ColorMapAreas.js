@@ -45,6 +45,22 @@ export default class ColorMapAreas extends React.Component {
         height="auto"
         viewBox={boundary.viewbox}
       >
+        <defs>
+          <pattern
+            id="diagonalHatch"
+            viewBox="0,0,40,40"
+            width={15}
+            height={15}
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M-10,10 l20,-20
+           M0,40 l40,-40
+           M30,50 l20,-20"
+              style={{ stroke: "black", strokeWidth: 6 }}
+            />
+          </pattern>
+        </defs>
         <g>{fylker}</g>
       </svg>
     );

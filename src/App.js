@@ -40,13 +40,13 @@ const Spredningskart = ({ readonly }) => {
     },
     extinct: {
       normal: {
-        stroke: "#555",
-        fill: "#444"
+        stroke: "#eee",
+        fill: "url(#diagonalHatch)"
       },
       highlight: {
-        stroke: "#222",
+        stroke: "#eee",
         strokeWidth: 3,
-        fill: "#444"
+        fill: "url(#diagonalHatch)"
       }
     }
   };
