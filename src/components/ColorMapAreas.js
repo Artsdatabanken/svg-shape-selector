@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Region from "./Region";
 
 const ColorMapAreas = ({
@@ -13,6 +13,9 @@ const ColorMapAreas = ({
   const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState(
     null
   );
+
+  const offsetX = useRef();
+  const offsetY = useRef();
 
   // Make sure the mouseovered item to be rendered on top
   const sortedHightlightedLast = regionDefs.sort(a =>
@@ -31,10 +34,14 @@ const ColorMapAreas = ({
         title={regionDef.title}
         boundaryPath={boundary.regions[kode]}
         style={style}
+        highlight={hoveringOver === kode}
         readonly={readOnly}
         onMouseLeave={() => setHoveringOver(null)}
         onMouseOver={e => {
           e.stopPropagation();
+          offsetX.current.beginElement(); //triggers animation
+          offsetY.current.beginElement(); //triggers animation
+
           if (readOnly) return;
           setHoveringOver(kode);
           if (colorForHoldAndDragPaint !== null)
@@ -89,9 +96,41 @@ const ColorMapAreas = ({
             />
           </g>
         </pattern>
+        <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+          <feOffset result="offOut" in="SourceAlpha" dx="4" dy="4"></feOffset>
+          <feGaussianBlur
+            result="blurOut"
+            in="offOut"
+            stdDeviation="4"
+          ></feGaussianBlur>
+          <feColorMatrix
+            result="matrixOut"
+            in="blurOut"
+            type="matrix"
+            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0"
+          />
+          <feBlend in="SourceGraphic" in2="matrixOut" mode="normal" />
+        </filter>
         <filter id="f2" x="-50%" y="-50%" width="200%" height="200%">
-          <feOffset result="offOut" in="SourceAlpha" dx="5" dy="5" />
-          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="12" />
+          <feOffset result="offOut" in="SourceAlpha" dx="8" dy="8">
+            <animate
+              ref={offsetX}
+              attributeName="dx"
+              calcMode="spline"
+              values="0;8"
+              keyTimes="0;0.75;0.25;1"
+              dur="0.3s"
+            />
+            <animate
+              ref={offsetY}
+              attributeName="dy"
+              calcMode="linear"
+              begin="0s"
+              dur="0.3s"
+              values="0;8"
+            />
+          </feOffset>
+          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="4" />
           <feColorMatrix
             result="matrixOut"
             in="blurOut"
@@ -101,7 +140,7 @@ const ColorMapAreas = ({
           <feBlend in="SourceGraphic" in2="matrixOut" mode="normal" />
         </filter>
       </defs>
-      <g>{svgRegions}</g>
+      <g style={{ filter: "url(#f1)" }}>{svgRegions}</g>
     </svg>
   );
 };
