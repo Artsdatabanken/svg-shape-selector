@@ -76,17 +76,30 @@ const ColorMapAreas = ({
           patternUnits="userSpaceOnUse"
           patternTransform="rotate(90) scale(1.3 1.3)"
         >
-          <path
-            d="M-10,10 l20,-20
+          <g>
+            <rect
+              width="40"
+              height="40"
+              style={{ fill: "hsl(10, 96%, 97%)" }}
+            />
+            <path
+              d="M-10,10 l20,-20
            M0,40 l40,-40
            M30,50 l20,-20"
-            style={{ stroke: "#ccc", strokeWidth: 15 }}
-          />
+              style={{ stroke: "#ddd", strokeWidth: 15 }}
+            />
+          </g>
         </pattern>
-        <filter id="f2" x="0" y="0" width="200%" height="200%">
-          <feOffset result="offOut" in="SourceAlpha" dx="0" dy="0" />
-          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
-          <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+        <filter id="f2" x="-50%" y="-50%" width="200%" height="200%">
+          <feOffset result="offOut" in="SourceAlpha" dx="5" dy="5" />
+          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="25" />
+          <feColorMatrix
+            result="matrixOut"
+            in="blurOut"
+            type="matrix"
+            values="0.3 0 0 0 0 0 0.3 0 0 0 0 0 0.3 0 0 0 0 0 0.7 0"
+          />
+          <feBlend in="SourceGraphic" in2="matrixOut" mode="normal" />
         </filter>
       </defs>
       <g>{svgRegions}</g>

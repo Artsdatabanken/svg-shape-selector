@@ -2,11 +2,12 @@
   {
     "title": "Ikke kjent",
     "normal": {
-      "stroke": "#777",
+      "stroke": "hsl(10, 10%, 25%)",
+      "strokeWidth": 2,
       "fill": "hsl(10, 96%, 97%)"
     },
     "highlight": {
-      "stroke": "#555",
+      "stroke": "hsl(10, 96%, 15%)",
       "strokeWidth": 3,
       "filter": "url(#f2)",
       "fill": "hsl(10, 96%, 97%)"
@@ -16,40 +17,42 @@
     "key": "assumed",
     "title": "Antatt",
     "normal": {
-      "stroke": "#777",
-      "fill": "#fc8169"
+      "stroke": "hsl(10, 96%, 25%)",
+      "strokeWidth": 2,
+      "fill": "hsl(10, 96%, 70%)"
     },
     "highlight": {
-      "stroke": "#555",
+      "stroke": "hsl(10, 96%, 15%)",
       "strokeWidth": 3,
       "filter": "url(#f2)",
-      "fill": "#fc8169"
+      "fill": "hsl(10, 96%, 70%)"
     }
   },
   {
     "key": "known",
     "title": "Kjent",
     "normal": {
-      "stroke": "#555",
-      "fill": "#ff4c29"
+      "stroke": "hsl(10, 100%, 25%)",
+      "strokeWidth": 2,
+      "fill": "hsl(10, 100%, 58%)"
     },
     "highlight": {
-      "stroke": "#555",
+      "stroke": "hsl(10, 100%, 15%)",
       "strokeWidth": 3,
       "filter": "url(#f2)",
-      "fill": "#ff4c29"
+      "fill": "hsl(10, 100%, 58%)"
     }
   },
   {
     "key": "extinct",
     "title": "Utdødd",
     "normal": {
-      "strokeWidth": 1,
-      "stroke": "#555",
+      "stroke": "#888",
+      "strokeWidth": 2,
       "fill": "url(#diagonalHatch)"
     },
     "highlight": {
-      "stroke": "#555",
+      "stroke": "#ff4c29",
       "strokeWidth": 3,
       "filter": "url(#f2)",
       "fill": "url(#diagonalHatch)"
