@@ -34,9 +34,7 @@ const ColorMapAreas = ({
         title={regionDef.title}
         boundaryPath={boundary.regions[kode]}
         style={style}
-        highlight={hoveringOver === kode}
         readonly={readOnly}
-        onMouseLeave={() => setHoveringOver(null)}
         onMouseOver={e => {
           e.stopPropagation();
           offsetX.current.beginElement(); //triggers animation
@@ -55,14 +53,10 @@ const ColorMapAreas = ({
           onSwitchCategory && onSwitchCategory(e, kode, newState);
           setColorForHoldAndDragPaint(newState);
         }}
-        onMouseUp={e => {
-          e.stopPropagation();
-          if (readOnly) return;
-          setColorForHoldAndDragPaint(null);
-        }}
       />
     );
   });
+
   return (
     <svg
       preserveAspectRatio="xMidYMin meet"
@@ -70,6 +64,12 @@ const ColorMapAreas = ({
       height="auto"
       viewBox={boundary.viewbox}
       onMouseLeave={() => {
+        setHoveringOver(null);
+        setColorForHoldAndDragPaint(null);
+      }}
+      onMouseUp={e => {
+        e.stopPropagation();
+        if (readOnly) return;
         setColorForHoldAndDragPaint(null);
       }}
     >
@@ -116,9 +116,8 @@ const ColorMapAreas = ({
             <animate
               ref={offsetX}
               attributeName="dx"
-              calcMode="spline"
+              calcMode="linear"
               values="0;8"
-              keyTimes="0;0.75;0.25;1"
               dur="0.3s"
             />
             <animate
@@ -130,7 +129,16 @@ const ColorMapAreas = ({
               values="0;8"
             />
           </feOffset>
-          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="4" />
+          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="4">
+            <animate
+              ref={offsetY}
+              attributeName="stdDeviation"
+              calcMode="linear"
+              begin="0s"
+              dur="0.3s"
+              values="0;8"
+            />
+          </feGaussianBlur>
           <feColorMatrix
             result="matrixOut"
             in="blurOut"
@@ -140,6 +148,7 @@ const ColorMapAreas = ({
           <feBlend in="SourceGraphic" in2="matrixOut" mode="normal" />
         </filter>
       </defs>
+      <rect width="100%" height="100%" style={{ fill: "hsl(10, 96%, 57%)" }} />{" "}
       <g style={{ filter: "url(#f1)" }}>{svgRegions}</g>
     </svg>
   );
