@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
-import ColorMapAreas from "./components/ColorMapAreas";
+import ColorMapAreas from "../components/ColorMapAreas";
 import countyListLand from "./countyListLand";
-import boundary from "./example/map";
-import Legend from "./Legend";
-import categories from "./example/category";
+import boundary from "./map";
+import Legend from "../Legend";
+import categories from "./category";
 
 const Spredningskart = ({ readonly }) => {
   const [states, setStates] = useState({});
