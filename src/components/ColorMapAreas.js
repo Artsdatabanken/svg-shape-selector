@@ -75,7 +75,7 @@ const ColorMapAreas = ({
             d="M-10,10 l20,-20
            M0,40 l40,-40
            M30,50 l20,-20"
-            style={{ stroke: "black", strokeWidth: 6 }}
+            style={{ stroke: "#999", strokeWidth: 8 }}
           />
         </pattern>
       </defs>

@@ -1,65 +1,11 @@
 import React, { useCallback, useState } from "react";
 import ColorMapAreas from "./components/ColorMapAreas";
 import countyListLand from "./countyListLand";
-import boundary from "./map";
+import boundary from "./example/map";
 import Legend from "./Legend";
+import categories from "./example/category";
 
 const Spredningskart = ({ readonly }) => {
-  const categories = [
-    {
-      title: "Ikke kjent",
-      normal: {
-        stroke: "#777",
-        fill: "hsl(10, 96%, 97%)"
-      },
-      highlight: {
-        stroke: "#333",
-        strokeWidth: 3,
-        fill: "hsl(10, 96%, 97%)"
-      }
-    },
-    {
-      key: "assumed",
-      title: "Antatt",
-      normal: {
-        stroke: "#777",
-        fill: "#fc8169"
-      },
-      highlight: {
-        stroke: "#333",
-        strokeWidth: 3,
-        fill: "#fc8169"
-      }
-    },
-    {
-      key: "known",
-      title: "Kjent",
-      normal: {
-        stroke: "#555",
-        fill: "#ff4c29"
-      },
-      highlight: {
-        stroke: "#333",
-        strokeWidth: 3,
-        fill: "#ff4c29"
-      }
-    },
-    {
-      key: "extinct",
-      title: "Utdødd",
-      normal: {
-        strokeWidth: 1,
-        stroke: "#333",
-        fill: "url(#diagonalHatch)"
-      },
-      highlight: {
-        stroke: "#333",
-        strokeWidth: 3,
-        fill: "url(#diagonalHatch)"
-      }
-    }
-  ];
-
   const [states, setStates] = useState({});
 
   const handleMouseDown = useCallback(
