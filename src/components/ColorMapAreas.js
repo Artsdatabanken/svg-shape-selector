@@ -16,7 +16,7 @@ const ColorMapAreas = ({
   );
 
   // Make sure the mouseovered item to be rendered on top
-  const sortedHightlightedLast = regionDefs.sort((a, b) =>
+  const sortedHightlightedLast = regionDefs.sort(a =>
     a.kode === hoveringOver ? 1 : -1
   );
   const svgRegions = sortedHightlightedLast.map(regionDef => {
@@ -32,9 +32,8 @@ const ColorMapAreas = ({
         title={regionDef.title}
         boundaryPath={boundary.regions[kode]}
         style={style}
-        bringToFront={hoveringOver === kode}
         readonly={readOnly}
-        onMouseLeave={e => setHoveringOver(null)}
+        onMouseLeave={() => setHoveringOver(null)}
         onMouseOver={e => {
           e.stopPropagation();
           if (readOnly) return;

@@ -6,7 +6,6 @@ const Region = ({
   boundaryPath,
   style,
   readonly,
-  bringToFront,
   onMouseDown,
   onMouseUp,
   onMouseOver,
@@ -17,7 +16,6 @@ const Region = ({
       key={kode}
       {...style}
       style={{ cursor: readonly ? "arrow" : "hand" }}
-      zindex={bringToFront ? 10 : 0}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseOver={onMouseOver}
