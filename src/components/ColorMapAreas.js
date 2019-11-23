@@ -148,7 +148,6 @@ const ColorMapAreas = ({
           <feBlend in="SourceGraphic" in2="matrixOut" mode="normal" />
         </filter>
       </defs>
-      <rect width="100%" height="100%" style={{ fill: "hsl(10, 96%, 57%)" }} />{" "}
       <g style={{ filter: "url(#f1)" }}>{svgRegions}</g>
     </svg>
   );
