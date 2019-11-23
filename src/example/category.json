@@ -47,7 +47,8 @@
     "key": "extinct",
     "title": "Utdødd",
     "normal": {
-      "stroke": "#888",
+      "stroke": "hsl(10, 100%, 25%)",
+      "_stroke": "#888",
       "strokeWidth": 2,
       "fill": "url(#diagonalHatch)"
     },

@@ -7,8 +7,7 @@ const ColorMapAreas = ({
   readOnly,
   regionDefs,
   states,
-  onMouseDown,
-  onMouseUp
+  onSwitchCategory
 }) => {
   const [hoveringOver, setHoveringOver] = useState();
   const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState(
@@ -39,19 +38,19 @@ const ColorMapAreas = ({
           if (readOnly) return;
           setHoveringOver(kode);
           if (colorForHoldAndDragPaint !== null)
-            onMouseDown(e, kode, colorForHoldAndDragPaint);
+            onSwitchCategory &&
+              onSwitchCategory(e, kode, colorForHoldAndDragPaint);
         }}
         onMouseDown={e => {
           e.stopPropagation();
           if (readOnly) return;
           const newState = (state + 1) % categories.length;
-          onMouseDown && onMouseDown(e, kode, newState);
+          onSwitchCategory && onSwitchCategory(e, kode, newState);
           setColorForHoldAndDragPaint(newState);
         }}
         onMouseUp={e => {
           e.stopPropagation();
           if (readOnly) return;
-          onMouseUp && onMouseUp(e, kode);
           setColorForHoldAndDragPaint(null);
         }}
       />
@@ -92,12 +91,12 @@ const ColorMapAreas = ({
         </pattern>
         <filter id="f2" x="-50%" y="-50%" width="200%" height="200%">
           <feOffset result="offOut" in="SourceAlpha" dx="5" dy="5" />
-          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="25" />
+          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="12" />
           <feColorMatrix
             result="matrixOut"
             in="blurOut"
             type="matrix"
-            values="0.3 0 0 0 0 0 0.3 0 0 0 0 0 0.3 0 0 0 0 0 0.7 0"
+            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0"
           />
           <feBlend in="SourceGraphic" in2="matrixOut" mode="normal" />
         </filter>

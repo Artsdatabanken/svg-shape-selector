@@ -8,7 +8,7 @@ import categories from "./example/category";
 const Spredningskart = ({ readonly }) => {
   const [states, setStates] = useState({});
 
-  const handleMouseDown = useCallback(
+  const handleSwitchCategory = useCallback(
     (e, fylke, state) => {
       states[fylke] = state;
       setStates(states);
@@ -43,7 +43,7 @@ const Spredningskart = ({ readonly }) => {
           readonly={readonly}
           categories={categories}
           boundary={boundary}
-          onMouseDown={handleMouseDown}
+          onSwitchCategory={handleSwitchCategory}
           regionDefs={regionDefs}
           states={states}
         />
