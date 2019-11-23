@@ -16,22 +16,17 @@ const Spredningskart = ({ readonly }) => {
     [states]
   );
 
-  const fylkerArray = countyListLand.map(fylke => {
+  const regionDefs = countyListLand.map(fylke => {
     const curState = states[fylke] || 0;
-    const active = categories[curState];
+    const state = categories[curState];
     return {
-      id: fylke.Value,
-      title: `${fylke.Text}: ${active.title}`,
-      style: active
+      kode: fylke.Value,
+      title: `${fylke.Text}: ${state.title}`,
+      style: state
     };
   });
+  console.log(regionDefs);
 
-  const fylker = fylkerArray.reduce((o, currentArray) => {
-    const key = currentArray.id,
-      value = currentArray;
-    o[key] = value;
-    return o;
-  }, {});
   return (
     <div>
       <div
@@ -49,7 +44,7 @@ const Spredningskart = ({ readonly }) => {
           categories={categories}
           boundary={boundary}
           onMouseDown={handleMouseDown}
-          fylker={fylker}
+          regionDefs={regionDefs}
           states={states}
         />
       </div>

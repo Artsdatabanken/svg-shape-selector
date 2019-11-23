@@ -5,7 +5,7 @@ const ColorMapAreas = ({
   boundary,
   categories,
   readOnly,
-  fylker: regionDefs,
+  regionDefs,
   states,
   onMouseDown,
   onMouseUp
@@ -15,8 +15,12 @@ const ColorMapAreas = ({
     null
   );
 
-  const svgRegions = Object.keys(regionDefs).map(kode => {
-    const regionDef = regionDefs[kode];
+  // Make sure the mouseovered item to be rendered on top
+  const sortedHightlightedLast = regionDefs.sort((a, b) =>
+    a.kode === hoveringOver ? 1 : -1
+  );
+  const svgRegions = sortedHightlightedLast.map(regionDef => {
+    const kode = regionDef.kode;
     const state = states[kode] || 0;
     const mainStyle = categories[state];
     let style = mainStyle.normal;
