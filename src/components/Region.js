@@ -6,6 +6,7 @@ const Region = ({
   boundaryPath,
   style,
   readonly,
+  bringToFront,
   onMouseDown,
   onMouseUp,
   onMouseOver,
@@ -14,10 +15,9 @@ const Region = ({
   return (
     <g
       key={kode}
-      stroke={style.stroke}
-      strokeWidth={style.strokeWidth}
-      fill={style.fill}
+      {...style}
       style={{ cursor: readonly ? "arrow" : "hand" }}
+      zindex={bringToFront ? 10 : 0}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseOver={onMouseOver}

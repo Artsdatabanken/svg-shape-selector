@@ -6,8 +6,9 @@
       "fill": "hsl(10, 96%, 97%)"
     },
     "highlight": {
-      "stroke": "#333",
+      "stroke": "#555",
       "strokeWidth": 3,
+      "filter": "url(#f2)",
       "fill": "hsl(10, 96%, 97%)"
     }
   },
@@ -19,8 +20,9 @@
       "fill": "#fc8169"
     },
     "highlight": {
-      "stroke": "#333",
+      "stroke": "#555",
       "strokeWidth": 3,
+      "filter": "url(#f2)",
       "fill": "#fc8169"
     }
   },
@@ -32,8 +34,9 @@
       "fill": "#ff4c29"
     },
     "highlight": {
-      "stroke": "#333",
+      "stroke": "#555",
       "strokeWidth": 3,
+      "filter": "url(#f2)",
       "fill": "#ff4c29"
     }
   },
@@ -42,12 +45,13 @@
     "title": "Utdødd",
     "normal": {
       "strokeWidth": 1,
-      "stroke": "#333",
+      "stroke": "#555",
       "fill": "url(#diagonalHatch)"
     },
     "highlight": {
-      "stroke": "#333",
+      "stroke": "#555",
       "strokeWidth": 3,
+      "filter": "url(#f2)",
       "fill": "url(#diagonalHatch)"
     }
   }

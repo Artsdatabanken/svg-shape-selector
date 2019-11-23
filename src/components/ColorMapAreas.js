@@ -28,6 +28,7 @@ const ColorMapAreas = ({
         title={regionDef.title}
         boundaryPath={boundary.regions[kode]}
         style={style}
+        bringToFront={hoveringOver === kode}
         readonly={readOnly}
         onMouseLeave={e => setHoveringOver(null)}
         onMouseOver={e => {
@@ -70,14 +71,20 @@ const ColorMapAreas = ({
           width={15}
           height={15}
           patternUnits="userSpaceOnUse"
+          patternTransform="rotate(90) scale(1.3 1.3)"
         >
           <path
             d="M-10,10 l20,-20
            M0,40 l40,-40
            M30,50 l20,-20"
-            style={{ stroke: "#999", strokeWidth: 8 }}
+            style={{ stroke: "#ccc", strokeWidth: 15 }}
           />
         </pattern>
+        <filter id="f2" x="0" y="0" width="200%" height="200%">
+          <feOffset result="offOut" in="SourceAlpha" dx="0" dy="0" />
+          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+          <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+        </filter>
       </defs>
       <g>{svgRegions}</g>
     </svg>
