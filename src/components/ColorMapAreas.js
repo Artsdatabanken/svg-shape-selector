@@ -11,6 +11,9 @@ const ColorMapAreas = ({
   onMouseUp
 }) => {
   const [hoveringOver, setHoveringOver] = useState();
+  const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState(
+    null
+  );
 
   const svgRegions = Object.keys(regionDefs).map(kode => {
     const regionDef = regionDefs[kode];
@@ -27,9 +30,26 @@ const ColorMapAreas = ({
         style={style}
         readonly={readOnly}
         onMouseLeave={e => setHoveringOver(null)}
-        onMouseOver={e => !readOnly && setHoveringOver(kode)}
-        onMouseDown={e => !readOnly && onMouseDown(e, kode)}
-        onMouseUp={e => !readOnly && onMouseUp(e, kode)}
+        onMouseOver={e => {
+          e.stopPropagation();
+          if (readOnly) return;
+          setHoveringOver(kode);
+          if (colorForHoldAndDragPaint !== null)
+            onMouseDown(e, kode, colorForHoldAndDragPaint);
+        }}
+        onMouseDown={e => {
+          e.stopPropagation();
+          if (readOnly) return;
+          const newState = (state + 1) % categories.length;
+          onMouseDown && onMouseDown(e, kode, newState);
+          setColorForHoldAndDragPaint(newState);
+        }}
+        onMouseUp={e => {
+          e.stopPropagation();
+          if (readOnly) return;
+          onMouseUp && onMouseUp(e, kode);
+          setColorForHoldAndDragPaint(null);
+        }}
       />
     );
   });
@@ -39,6 +59,9 @@ const ColorMapAreas = ({
       width="100%"
       height="auto"
       viewBox={boundary.viewbox}
+      onMouseLeave={() => {
+        setColorForHoldAndDragPaint(null);
+      }}
     >
       <defs>
         <pattern

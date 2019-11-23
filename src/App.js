@@ -61,39 +61,13 @@ const Spredningskart = ({ readonly }) => {
   ];
 
   const [states, setStates] = useState({});
-  const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState(1);
 
-  const setChecked = useCallback(
-    (fylke, state) => {
+  const handleMouseDown = useCallback(
+    (e, fylke, state) => {
       states[fylke] = state;
       setStates(states);
     },
     [states]
-  );
-
-  const handleMouseOver = useCallback(
-    (e, fylke) => {
-      e.stopPropagation();
-      if (colorForHoldAndDragPaint == null) return;
-      setChecked(fylke, colorForHoldAndDragPaint);
-    },
-    [colorForHoldAndDragPaint, setChecked]
-  );
-
-  const handleMouseUp = useCallback(e => {
-    e.stopPropagation();
-    setColorForHoldAndDragPaint(null);
-  }, []);
-
-  const handleMouseDown = useCallback(
-    (e, fylke) => {
-      e.stopPropagation();
-      const curState = states[fylke] || 0;
-      const newState = (curState + 1) % categories.length;
-      setColorForHoldAndDragPaint(newState);
-      setChecked(fylke, newState);
-    },
-    [states, categories.length, setChecked]
   );
 
   const fylkerArray = countyListLand.map(fylke => {
@@ -123,20 +97,12 @@ const Spredningskart = ({ readonly }) => {
           height: 500,
           width: 500
         }}
-        onMouseLeave={() => {
-          setColorForHoldAndDragPaint(null);
-        }}
       >
         <ColorMapAreas
           readonly={readonly}
           categories={categories}
           boundary={boundary}
-          onMouseLeave={() => {
-            setColorForHoldAndDragPaint(null);
-          }}
           onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseOver={handleMouseOver}
           fylker={fylker}
           states={states}
         />
