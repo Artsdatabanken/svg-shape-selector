@@ -61,7 +61,7 @@ const ColorMapAreas = ({
   return (
     <svg
       style={{ userSelect: "none" }}
-      preserveAspectRatio="xMidYMin meet"
+      preserveAspectRatio="none"
       width="100%"
       height="auto"
       viewBox={boundary.viewbox}
