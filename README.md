@@ -1,6 +1,6 @@
 # SVG Shape Selector
 
-A clickable SVG with customizable categories.
+A clickable SVG with customizable categories as React component.
 
 ![Screenshot](./screenshot.gif)
 
