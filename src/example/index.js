@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
-import ColorMapAreas from "../components/ColorMapAreas";
+import SvgShapeSelector from "../components/SvgShapeSelector";
 import countyListLand from "./countyListLand";
 import boundary from "./map";
-import Legend from "../Legend";
+import Legend from "../components/Legend";
 import categories from "./category";
 
 const Spredningskart = ({ readonly }) => {
@@ -39,7 +39,7 @@ const Spredningskart = ({ readonly }) => {
           width: 500
         }}
       >
-        <ColorMapAreas
+        <SvgShapeSelector
           readonly={readonly}
           categories={categories}
           boundary={boundary}
@@ -48,7 +48,7 @@ const Spredningskart = ({ readonly }) => {
           states={states}
         >
           <Legend categories={categories} />
-        </ColorMapAreas>
+        </SvgShapeSelector>
       </div>
     </div>
   );
