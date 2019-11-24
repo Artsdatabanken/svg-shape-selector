@@ -1,0 +1,7 @@
+bin/
+example/
+src/
+.babelrc
+.eslintrc
+.travis.yml
+junk/
