@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Region from "./Region";
 
 const ColorMapAreas = ({
+  children,
   boundary,
   categories,
   readOnly,
@@ -149,6 +150,7 @@ const ColorMapAreas = ({
         </filter>
       </defs>
       <g style={{ filter: "url(#f1)" }}>{svgRegions}</g>
+      {children}
     </svg>
   );
 };

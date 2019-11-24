@@ -3,6 +3,7 @@ import ColorMapAreas from "../components/ColorMapAreas";
 import countyListLand from "./countyListLand";
 import boundary from "./map";
 import Legend from "../Legend";
+import Legend2 from "../Legend2";
 import categories from "./category";
 
 const Spredningskart = ({ readonly }) => {
@@ -46,7 +47,9 @@ const Spredningskart = ({ readonly }) => {
           onSwitchCategory={handleSwitchCategory}
           regionDefs={regionDefs}
           states={states}
-        />
+        >
+          <Legend2 categories={categories} />
+        </ColorMapAreas>
       </div>
       {<Legend categories={categories} />}
     </div>
