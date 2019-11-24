@@ -28,29 +28,16 @@ const Example = ({ readonly }) => {
   });
 
   return (
-    <div>
-      <div
-        style={{
-          border: "1px solid #888",
-          position: "absolute",
-          left: 50,
-          top: 50,
-          height: 500,
-          width: 500
-        }}
-      >
-        <SvgShapeSelector
-          readonly={readonly}
-          categories={categories}
-          boundary={boundary}
-          onSwitchCategory={handleSwitchCategory}
-          regionDefs={regionDefs}
-          states={states}
-        >
-          <Legend categories={categories} />
-        </SvgShapeSelector>
-      </div>
-    </div>
+    <SvgShapeSelector
+      readonly={readonly}
+      categories={categories}
+      boundary={boundary}
+      onSwitchCategory={handleSwitchCategory}
+      regionDefs={regionDefs}
+      states={states}
+    >
+      <Legend categories={categories} />
+    </SvgShapeSelector>
   );
 };
 

@@ -60,10 +60,14 @@ const SvgShapeSelector = ({
 
   return (
     <svg
-      style={{ userSelect: "none" }}
+      style={{
+        userSelect: "none",
+        left: 0,
+        top: 0,
+        width: "100%",
+        height: "auto"
+      }}
       preserveAspectRatio="none"
-      width="100%"
-      height="auto"
       viewBox={boundary.viewbox}
       onMouseLeave={e => {
         e.stopPropagation();
