@@ -7,7 +7,8 @@ const Region = ({
   style,
   readonly,
   onMouseDown,
-  onMouseOver
+  onMouseOver,
+  onMouseLeave
 }) => {
   return (
     <g
@@ -16,6 +17,7 @@ const Region = ({
       style={{ cursor: readonly ? "arrow" : "hand" }}
       onMouseDown={onMouseDown}
       onMouseOver={onMouseOver}
+      onMouseLeave={onMouseLeave}
     >
       {boundaryPath}
       <title>{title}</title>

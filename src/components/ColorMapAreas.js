@@ -10,13 +10,10 @@ const ColorMapAreas = ({
   states,
   onSwitchCategory
 }) => {
-  const [hoveringOver, setHoveringOver] = useState();
-  const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState(
-    null
-  );
-
   const offsetX = useRef();
   const offsetY = useRef();
+  const [hoveringOver, setHoveringOver] = useState();
+  const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState();
 
   // Make sure the mouseovered item to be rendered on top
   const sortedHightlightedLast = regionDefs.sort(a =>
@@ -54,24 +51,40 @@ const ColorMapAreas = ({
           onSwitchCategory && onSwitchCategory(e, kode, newState);
           setColorForHoldAndDragPaint(newState);
         }}
+        onMouseLeave={e => {
+          setHoveringOver(null);
+        }}
       />
     );
   });
 
   return (
     <svg
+      style={{ userSelect: "none" }}
       preserveAspectRatio="xMidYMin meet"
       width="100%"
       height="auto"
       viewBox={boundary.viewbox}
-      onMouseLeave={() => {
+      onMouseLeave={e => {
+        e.preventDefault();
+        e.stopPropagation();
         setHoveringOver(null);
         setColorForHoldAndDragPaint(null);
       }}
       onMouseUp={e => {
+        e.preventDefault();
         e.stopPropagation();
         if (readOnly) return;
         setColorForHoldAndDragPaint(null);
+      }}
+      onMouseEnter={e => {
+        e.preventDefault();
+        e.stopPropagation();
+        setColorForHoldAndDragPaint(null);
+      }}
+      onMouseMove={e => {
+        e.preventDefault();
+        e.stopPropagation();
       }}
     >
       <defs>
