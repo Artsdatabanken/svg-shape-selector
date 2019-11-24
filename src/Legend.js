@@ -1,6 +1,6 @@
 import React from "react";
 
-const Legend = ({ categories }) => (
+const Legend = ({ categories, size = 40 }) => (
   <g>
     {Object.keys(categories).map(key => {
       const e = categories[key];
@@ -8,7 +8,8 @@ const Legend = ({ categories }) => (
         <LegendItem
           key={key}
           x={e.x}
-          y={e.y}
+          y={e.y * 0.8}
+          size={size}
           title={e.title}
           fill={e.normal.fill}
         />
@@ -17,14 +18,14 @@ const Legend = ({ categories }) => (
   </g>
 );
 
-const LegendItem = ({ title, fill, x, y }) => (
+const LegendItem = ({ title, fill, x, y, size }) => (
   <svg x={x} y={y}>
     <rect
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       style={{ fill: fill, stroke: "rgb(0,0,0)", strokeWidth: 1 }}
     />
-    <text x={34} y={20}>
+    <text fontSize={32} x={1.5 * size} y={32}>
       {title}
     </text>
   </svg>

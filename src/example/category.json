@@ -1,8 +1,8 @@
 [
   {
     "title": "Ikke kjent",
-    "x": 20,
-    "y": 20,
+    "x": 0,
+    "y": 24,
     "normal": {
       "stroke": "hsl(10, 10%, 25%)",
       "strokeWidth": 1,
@@ -18,8 +18,8 @@
   {
     "key": "assumed",
     "title": "Antatt",
-    "x": 20,
-    "y": 60,
+    "x": 0,
+    "y": 88,
     "normal": {
       "stroke": "hsl(10, 96%, 25%)",
       "strokeWidth": 1,
@@ -35,8 +35,8 @@
   {
     "key": "known",
     "title": "Kjent",
-    "x": 20,
-    "y": 100,
+    "x": 0,
+    "y": 152,
     "normal": {
       "stroke": "hsl(10, 100%, 25%)",
       "strokeWidth": 1,
@@ -52,8 +52,8 @@
   {
     "key": "extinct",
     "title": "Utdødd",
-    "x": 20,
-    "y": 140,
+    "x": 0,
+    "y": 216,
     "normal": {
       "stroke": "hsl(10, 100%, 25%)",
       "_stroke": "#888",
