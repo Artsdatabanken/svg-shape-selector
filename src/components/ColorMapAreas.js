@@ -66,24 +66,20 @@ const ColorMapAreas = ({
       height="auto"
       viewBox={boundary.viewbox}
       onMouseLeave={e => {
-        e.preventDefault();
         e.stopPropagation();
         setHoveringOver(null);
         setColorForHoldAndDragPaint(null);
       }}
       onMouseUp={e => {
-        e.preventDefault();
         e.stopPropagation();
         if (readOnly) return;
         setColorForHoldAndDragPaint(null);
       }}
       onMouseEnter={e => {
-        e.preventDefault();
         e.stopPropagation();
         setColorForHoldAndDragPaint(null);
       }}
       onMouseMove={e => {
-        e.preventDefault();
         e.stopPropagation();
       }}
     >
