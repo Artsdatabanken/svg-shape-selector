@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Region from "./Region";
 
-const ColorMapAreas = ({
+const SvgShapeSelector = ({
   children,
   boundary,
   categories,
@@ -164,4 +164,4 @@ const ColorMapAreas = ({
   );
 };
 
-export default ColorMapAreas;
+export default SvgShapeSelector;

@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from "react";
-import SvgShapeSelector from "../components/SvgShapeSelector";
+import { render } from "react-dom";
+import SvgShapeSelector from "../src/components/SvgShapeSelector";
+import Legend from "../src/components/Legend";
 import countyListLand from "./countyListLand";
 import boundary from "./map";
-import Legend from "../components/Legend";
 import categories from "./category";
 
-const Spredningskart = ({ readonly }) => {
+const Example = ({ readonly }) => {
   const [states, setStates] = useState({});
 
   const handleSwitchCategory = useCallback(
@@ -25,7 +26,6 @@ const Spredningskart = ({ readonly }) => {
       style: state
     };
   });
-  console.log(regionDefs);
 
   return (
     <div>
@@ -54,4 +54,6 @@ const Spredningskart = ({ readonly }) => {
   );
 };
 
-export default Spredningskart;
+render(<Example />, document.querySelector("#mount"));
+
+//export default Spredningskart;
