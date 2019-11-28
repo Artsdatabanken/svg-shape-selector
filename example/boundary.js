@@ -196,6 +196,6 @@ const country = (
 const norway = {
   country,
   regions,
-  viewbox: "-1400 140 900 300"
+  viewbox: "140 140 900 300"
 };
 export default norway;
