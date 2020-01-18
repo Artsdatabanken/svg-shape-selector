@@ -44,5 +44,3 @@ const Example = ({ readonly }) => {
 };
 
 render(<Example />, document.querySelector("#mount"));
-
-//export default Spredningskart;
