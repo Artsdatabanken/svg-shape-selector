@@ -88,28 +88,6 @@ const SvgShapeSelector = ({
       }}
     >
       <defs>
-        <pattern
-          id="diagonalHatch"
-          viewBox="0,0,40,40"
-          width={15}
-          height={15}
-          patternUnits="userSpaceOnUse"
-          patternTransform="rotate(90) scale(1.3 1.3)"
-        >
-          <g>
-            <rect
-              width="40"
-              height="40"
-              style={{ fill: "hsl(10, 96%, 97%)" }}
-            />
-            <path
-              d="M-10,10 l20,-20
-           M0,40 l40,-40
-           M30,50 l20,-20"
-              style={{ stroke: "#ddd", strokeWidth: 15 }}
-            />
-          </g>
-        </pattern>
         <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
           <feOffset result="offOut" in="SourceAlpha" dx="4" dy="4"></feOffset>
           <feGaussianBlur

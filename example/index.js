@@ -5,6 +5,7 @@ import Legend from "../src/components/Legend";
 import countyListLand from "./countyListLand";
 import boundary from "./map";
 import categories from "./category";
+import DiagonalHatch from "./DiagonalHatch";
 
 const Example = ({ readonly }) => {
   const [states, setStates] = useState({});
@@ -36,6 +37,7 @@ const Example = ({ readonly }) => {
       regionDefs={regionDefs}
       states={states}
     >
+      <DiagonalHatch />
       <Legend categories={categories} />
     </SvgShapeSelector>
   );
