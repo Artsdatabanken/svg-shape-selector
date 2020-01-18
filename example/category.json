@@ -1,8 +1,44 @@
 [
   {
-    "title": "Ikke kjent",
+    "key": "known",
+    "title": "Kjent",
     "x": 24,
     "y": 24,
+    "tooltip": "Beskrivende tekst her?",
+    "normal": {
+      "stroke": "hsl(22, 35%, 18%)",
+      "strokeWidth": 1,
+      "fill": "hsl(22, 35%, 43%)"
+    },
+    "highlight": {
+      "stroke": "hsl(22, 35%, 18%)",
+      "strokeWidth": 2,
+      "filter": "url(#f2)",
+      "fill": "hsl(22, 35%, 53%)"
+    }
+  },
+  {
+    "key": "assumed",
+    "title": "Antatt",
+    "tooltip": "Beskrivende tekst her?",
+    "x": 24,
+    "y": 88,
+    "normal": {
+      "stroke": "hsl(35, 72%, 25%)",
+      "strokeWidth": 1,
+      "fill": "hsl(35, 72%, 60%)"
+    },
+    "highlight": {
+      "stroke": "hsl(35, 72%, 25%)",
+      "strokeWidth": 2,
+      "filter": "url(#f2)",
+      "fill": "hsl(35, 72%, 70%)"
+    }
+  },
+  {
+    "title": "Ikke kjent",
+    "x": 24,
+    "y": 152,
     "tooltip": "Beskrivende tekst her?",
     "normal": {
       "stroke": "hsl(10, 10%, 25%)",
@@ -10,62 +46,43 @@
       "fill": "hsl(10, 96%, 97%)"
     },
     "highlight": {
-      "stroke": "hsl(10, 100%, 25%)",
+      "stroke": "hsl(10, 0%, 25%)",
       "strokeWidth": 2,
       "filter": "url(#f2)",
       "fill": "hsl(10, 96%, 97%)"
     }
   },
   {
-    "key": "assumed",
-    "title": "Mulig",
-    "tooltip": "Beskrivende tekst her?",
+    "key": "assumed_extinct",
+    "title": "Antatt utdødd",
     "x": 24,
-    "y": 88,
+    "y": 216,
+    "tooltip": "Arten er ....",
     "normal": {
-      "stroke": "hsl(10, 96%, 25%)",
+      "stroke": "hsl(26.7, 15%, 25%)",
       "strokeWidth": 1,
-      "fill": "hsl(10, 96%, 70%)"
+      "fill": "HSL(26.7, 15%, 76.5%)"
     },
     "highlight": {
-      "stroke": "hsl(10, 100%, 25%)",
+      "stroke": "hsl(26.7, 15%, 25%)",
       "strokeWidth": 2,
       "filter": "url(#f2)",
-      "fill": "hsl(10, 96%, 70%)"
-    }
-  },
-  {
-    "key": "known",
-    "title": "Kjent",
-    "x": 24,
-    "y": 152,
-    "tooltip": "Beskrivende tekst her?",
-    "normal": {
-      "stroke": "hsl(10, 100%, 25%)",
-      "strokeWidth": 1,
-      "fill": "hsl(10, 100%, 58%)"
-    },
-    "highlight": {
-      "stroke": "hsl(10, 100%, 25%)",
-      "strokeWidth": 2,
-      "filter": "url(#f2)",
-      "fill": "hsl(10, 100%, 58%)"
+      "fill": "HSL(26.7, 15%, 86.5%)"
     }
   },
   {
     "key": "extinct",
     "title": "Utdødd",
     "x": 24,
-    "y": 216,
+    "y": 280,
     "tooltip": "Arten er ikke observert de siste >30 år",
     "normal": {
-      "stroke": "hsl(10, 100%, 25%)",
-      "_stroke": "#888",
+      "stroke": "hsl(10, 0%, 25%)",
       "strokeWidth": 1,
       "fill": "url(#diagonalHatch)"
     },
     "highlight": {
-      "stroke": "hsl(10, 100%, 25%)",
+      "stroke": "hsl(10, 0%, 25%)",
       "strokeWidth": 2,
       "filter": "url(#f2)",
       "fill": "url(#diagonalHatch)"

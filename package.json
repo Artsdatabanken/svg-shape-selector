@@ -4,9 +4,12 @@
   "private": false,
   "homepage": "https://github.com/artsdatabanken/svg-shape-selector",
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.12.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
   "scripts": {
     "publish:npm": "rm -rf dist && mkdir dist &&  babel src/components -d dist --copy-files"
   },
@@ -26,9 +29,9 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.4",
-    "@babel/preset-react": "^7.7.0"
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-react": "^7.8.3"
   },
   "babel": {
     "presets": [
