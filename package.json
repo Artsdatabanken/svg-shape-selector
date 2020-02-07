@@ -1,6 +1,6 @@
 {
   "name": "svg-shape-selector",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "private": false,
   "homepage": "https://github.com/artsdatabanken/svg-shape-selector",
   "peerDependencies": {
