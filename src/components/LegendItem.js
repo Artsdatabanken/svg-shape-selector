@@ -12,7 +12,7 @@ const LegendItem = ({ title, tooltip, fill, x, y, width, height, size }) => (
         filter: "url(#f1)"
       }}
     ></rect>
-    <text fontSize={size} x={1.5 * size} y={size}>
+    <text fontSize={size} x={1.5 * size} y={size*0.85}>
       {title}
     </text>
     <title>{tooltip}</title>
