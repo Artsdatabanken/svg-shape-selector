@@ -13,7 +13,7 @@ const SvgShapeSelector = ({
   const offsetX = useRef();
   const offsetY = useRef();
   const [hoveringOver, setHoveringOver] = useState();
-  const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState();
+  // const [colorForHoldAndDragPaint, setColorForHoldAndDragPaint] = useState();
 
   // Make sure the mouseovered item to be rendered on top
   const sortedHightlightedLast = regionDefs.sort(a =>
@@ -40,16 +40,16 @@ const SvgShapeSelector = ({
 
           if (readOnly) return;
           setHoveringOver(kode);
-          if (colorForHoldAndDragPaint !== null)
-            onSwitchCategory &&
-              onSwitchCategory(e, kode, colorForHoldAndDragPaint);
+          // if (colorForHoldAndDragPaint !== null)
+          //   onSwitchCategory &&
+          //     onSwitchCategory(e, kode, colorForHoldAndDragPaint);
         }}
         onMouseDown={e => {
           e.stopPropagation();
           if (readOnly) return;
           const newState = (state + 1) % categories.length;
           onSwitchCategory && onSwitchCategory(e, kode, newState);
-          setColorForHoldAndDragPaint(newState);
+          // setColorForHoldAndDragPaint(newState);
         }}
         onMouseLeave={e => {
           setHoveringOver(null);
@@ -72,16 +72,16 @@ const SvgShapeSelector = ({
       onMouseLeave={e => {
         e.stopPropagation();
         setHoveringOver(null);
-        setColorForHoldAndDragPaint(null);
+        // setColorForHoldAndDragPaint(null);
       }}
       onMouseUp={e => {
         e.stopPropagation();
         if (readOnly) return;
-        setColorForHoldAndDragPaint(null);
+        // setColorForHoldAndDragPaint(null);
       }}
       onMouseEnter={e => {
         e.stopPropagation();
-        setColorForHoldAndDragPaint(null);
+        // setColorForHoldAndDragPaint(null);
       }}
       onMouseMove={e => {
         e.stopPropagation();
@@ -110,14 +110,14 @@ const SvgShapeSelector = ({
               attributeName="dx"
               calcMode="linear"
               values="0;8"
-              dur="0.3s"
+              dur="0.1s"
             />
             <animate
               ref={offsetY}
               attributeName="dy"
               calcMode="linear"
               begin="0s"
-              dur="0.3s"
+              dur="0.1s"
               values="0;8"
             />
           </feOffset>
@@ -127,7 +127,7 @@ const SvgShapeSelector = ({
               attributeName="stdDeviation"
               calcMode="linear"
               begin="0s"
-              dur="0.3s"
+              dur="0.1s"
               values="0;8"
             />
           </feGaussianBlur>
